@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Snow Rider 3D - Thrilling Skiing Adventure Game</title>
+    <title>LCPSGAMES PRIVATE / Snow-Rider 3d </title>
     <meta name="description" content="Immerse yourself in Snow Rider 3D, a thrilling skiing adventure game set in breathtaking mountain landscapes. Ride your sleigh down snowy slopes, dodge obstacles, and collect gifts for an exhilarating experience.">
     <meta name="theme-color" content="#007ACC">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
@@ -13,8 +13,32 @@
     <meta name="keywords" content="Snow Rider 3D, skiing game, winter sports, snowboarding, ski game, mountain landscapes, skiing adventure, snowboarding adventure, snowy mountain, sleigh ride, winter game">
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
+
+    <!-- Cookie check script -->
     <script>
-        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/SnowRider3D-gd-1.json", {onProgress: UnityProgress,Module:{onRuntimeInitialized: function() {UnityProgress(gameInstance, "complete")}}});
+        // Function to get the value of a specific cookie by name
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let i = 0; i < cookies.length; i++) {
+                const [key, value] = cookies[i].split('=');
+                if (key === name) {
+                    return value;
+                }
+            }
+            return null;
+        }
+
+        // Check for the 'auth' cookie and redirect if it doesn't exist
+        window.onload = function () {
+            const authCookie = getCookie('auth');
+            if (!authCookie) {
+                // Redirect to a specified URL if the cookie is not found
+                window.location.href = "https://gamesthatarenotinvolvedwithlcps.github.io/superduperprivatelcpsgames/";
+            } else {
+                // Initialize the game only if the 'auth' cookie exists
+                var gameInstance = UnityLoader.instantiate("gameContainer", "Build/SnowRider3D-gd-1.json", {onProgress: UnityProgress,Module:{onRuntimeInitialized: function() {UnityProgress(gameInstance, "complete")}}});
+            }
+        };
     </script>
 </head>
 <body style="overflow:hidden;padding:0px;margin:0px;">
@@ -23,4 +47,3 @@
     </div>
 </body>
 </html>
-
